@@ -385,11 +385,9 @@ A typical tree:
 
 ```text
 .
-├── clock.py      # interpreter
-├── Clock         # optional launcher
+├── clock.py    
+├── Clock        
 ├── README.md
-└── examples/
-    └── hello.clk
 ```
 
 Suggested launcher (`Clock`):
