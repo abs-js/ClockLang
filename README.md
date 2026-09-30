@@ -32,8 +32,7 @@ If you enjoy language design, interpreters, or unusual syntax, you are invited t
 ## What you need
 
 - Python 3.9 or newer
-- The interpreter file, usually named `clock.py`
-- Optional launcher script named `Clock` that runs `clock.py`
+- The interpreter file, usually named `Clock`
 
 No extra packages are required. The standard library is enough.
 
@@ -44,16 +43,10 @@ No extra packages are required. The standard library is enough.
 Clone or copy the project, then run a source file:
 
 ```bash
-python3 clock.py program.clk
-```
-
-If you have the launcher script:
-
-```bash
-python3 Clock program.clk
-# or, after chmod +x Clock
 ./Clock program.clk
 ```
+
+Check if it has permission.
 
 Help and version:
 
