@@ -1,0 +1,8 @@
+{
+  "name": "Fs",
+  "version": "0.1.0",
+  "main": "main.clk",
+  "native": "Fs",
+  "description": "Acesso e edição simples de arquivos para Clock.",
+  "files": ["package.json", "main.clk"]
+}

@@ -1,0 +1,23 @@
+import Str as s
+
+func get
+    set format as $get.args[0]
+    set d as \CLASSES.DATE()\
+    set result as $format
+
+    # O formato pedido pela Clock é "minmin:hh" -> hora:minuto.
+    if $s.contains($result, "minmin:hh")
+        set result as $s.replace($result, "minmin:hh", $d.h + ":" + $d.min)
+    endif
+
+    set result as $s.replace($result, "yyyy", $d.year)
+    set result as $s.replace($result, "yy", $s.substr($d.y, 2, 2))
+    set result as $s.replace($result, "dd", $d.day)
+    set result as $s.replace($result, "d", $d.d)
+    set result as $s.replace($result, "mth", $d.mth)
+    set result as $s.replace($result, "mm", $d.mth)
+    set result as $s.replace($result, "hh", $d.h)
+    set result as $s.replace($result, "minmin", $d.min)
+    set result as $s.replace($result, "ss", $d.s)
+    return $result
+endfunc get

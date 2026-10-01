@@ -1,0 +1,9 @@
+{
+  "name": "Clock",
+  "version": "0.5.0",
+  "runtime": "main.py",
+  "installer": "ClockInstall",
+  "repository": "https://github.com/abs-js/CPM",
+  "repository_branch": "main",
+  "installed_packages_dir": "ClockPacks"
+}

@@ -1,0 +1,19 @@
+{
+  "packages": {
+    "Fs": {
+      "version": "0.1.0",
+      "path": "packages/Fs",
+      "main": "main.clk",
+      "native": "Fs",
+      "description": "Acesso e edição simples de arquivos para Clock.",
+      "files": ["package.json", "main.clk"]
+    },
+    "EasyTime": {
+      "version": "0.1.0",
+      "path": "packages/EasyTime",
+      "main": "main.clk",
+      "description": "Formatação simplificada de data e hora para Clock.",
+      "files": ["package.json", "main.clk"]
+    }
+  }
+}

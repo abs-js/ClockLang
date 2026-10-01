@@ -1,0 +1,7 @@
+{
+  "name": "EasyTime",
+  "version": "0.1.0",
+  "main": "main.clk",
+  "description": "Formatação simplificada de data e hora para Clock.",
+  "files": ["package.json", "main.clk"]
+}

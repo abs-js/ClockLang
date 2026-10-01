@@ -1,0 +1,10 @@
+import Math as m
+
+func somar
+    return $somar.args[0] + $somar.args[1]
+endfunc somar
+
+set resultado as \\somar(10, 20)\\
+get CLASSES.std().print($resultado)
+get CLASSES.std().print($m.pi)
+get CLASSES.std().color("Clock executando!", "cyan")

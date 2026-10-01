@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clock 0.5.0 — documentação</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0b0d10;color:#e8edf2;line-height:1.6} .wrap{min-height:100vh;display:grid;grid-template-columns:1fr 280px} main{padding:44px 7vw 80px;max-width:980px} aside{position:sticky;top:0;height:100vh;overflow:auto;border-left:1px solid #242a31;background:#101419;padding:28px 20px} h1{font-size:42px;margin-top:0} h2{margin-top:52px;border-bottom:1px solid #242a31;padding-bottom:9px} h3{margin-top:28px} code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace} .tag{display:inline-block;padding:3px 8px;border:1px solid #3b4652;border-radius:6px;color:#9dd9ff;font-family:monospace} pre{position:relative;background:#07090c;border:1px solid #242a31;border-radius:10px;padding:18px;overflow:auto} .copy{position:absolute;right:10px;top:10px;border:1px solid #3b4652;background:#121820;color:#d8e2eb;border-radius:6px;padding:5px 9px;cursor:pointer} a{color:#8fd1ff;text-decoration:none} li{margin:6px 0} .note{border-left:3px solid #6b7785;padding:10px 14px;background:#11161b} @media(max-width:850px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto;border-left:0;border-bottom:1px solid #242a31;order:-1}}
+</style></head>
+<body><div class="wrap"><main>
+<h1>&gt;clk_ <span style="font-size:18px;color:#8d9aa7">Clock 0.5.0</span></h1>
+<p>Documentação da linguagem, runtime e sistema de pacotes. <b>main.py</b> é o coração de tudo.</p>
+
+<h2 id="inicio">Início</h2>
+<p>Execute:</p><pre><button class="copy">Copiar</button><code>Clock arquivo.clk
+Clock -v
+Clock -h</code></pre>
+
+<h2 id="bandeiras">Bandeiras do Clock</h2>
+<pre><button class="copy">Copiar</button><code>-v, --version     versão
+-h, --help        ajuda
+-H, --history     histórico: comando + saída
+-u, --unsleepy    ignora sleep()
+-a, --autoinstall instala dependências ausentes</code></pre>
+
+<h2 id="modulos">Módulos</h2>
+<h3>Import</h3><pre><button class="copy">Copiar</button><code>import Math as m
+import Str as s
+import Fs as fs</code></pre>
+<p>Math e Str são pré-instalados. Fs é instalável.</p>
+<h3>Fs</h3><pre><button class="copy">Copiar</button><code>set texto as $fs.read("test.txt")
+set file as $fs.requestWrith("test.txt")
+get $file.addLine("nova linha")
+get $file.rmvLine(0)
+get $file.mvLine(0, 1)
+get $file.finish()</code></pre>
+
+<h2 id="sistema">Sistema</h2>
+<pre><button class="copy">Copiar</button><code>set linha as @
+set congelada as $linha
+get CLASSES.std().print(@)
+get sleep(1000)
+get die("fim")</code></pre>
+<p><span class="tag">@</span> sempre representa a linha atual. Ao salvar `@` em uma variável, o valor salvo permanece fixo.</p>
+
+<h2 id="date">DATE</h2>
+<pre><button class="copy">Copiar</button><code>set d as \CLASSES.DATE()\
+get CLASSES.std().print($d.day)
+get CLASSES.std().print($d.year)
+get CLASSES.std().print($d.mth)
+get CLASSES.std().print($d.s)
+get CLASSES.std().print($d.min)
+get CLASSES.std().print($d.h)
+get CLASSES.std().print($d.ms)
+get CLASSES.std().print($d.wd)</code></pre>
+
+<h2 id="history">HISTORY</h2>
+<pre><button class="copy">Copiar</button><code>get CLASSES.HISTORY[11]
+get CLASSES.HISTORY.START
+get CLASSES.HISTORY.PAUSE</code></pre>
+<p>O histórico é somente leitura. `get CLASSES.HISTORY[n]` reproduz o comando. Guardar o item numa variável o transforma em string.</p>
+
+<h2 id="easytime">EasyTime</h2>
+<p>Não pré-instalado. Instale:</p><pre><button class="copy">Copiar</button><code>ClockInstall install EasyTime</code></pre>
+<p>Depois:</p><pre><button class="copy">Copiar</button><code>import EasyTime as time
+set agora as $time.get("dd/mm/yy - minmin:hh")
+get CLASSES.std().print($agora)</code></pre>
+<p>O padrão documentado gera algo como <code>01/10/26 - 14:25</code>.</p>
+
+<h2 id="install">ClockInstall</h2>
+<pre><button class="copy">Copiar</button><code>ClockInstall -v
+ClockInstall -h
+ClockInstall -r install Fs
+ClockInstall install EasyTime
+ClockInstall uninstall Fs
+ClockInstall list
+ClockInstall checkConn
+ClockInstall searchPack time
+ClockInstall -i EasyTime
+ClockInstall -d EasyTime</code></pre>
+<p>Por padrão o gerenciador consulta <code>abs-js/CPM</code>, branch <code>main</code>, e instala em <code>ClockPacks/NOME</code>.</p>
+<div class="note">Para esta versão, a URL pública do repositório foi testada e respondeu 404. A implementação está apontada para ela mesmo assim e emitirá o erro de conexão/HTTP caso o repositório esteja privado, renomeado ou indisponível.</div>
+
+<h2 id="package">Banco de pacotes</h2>
+<pre><button class="copy">Copiar</button><code>{
+  "packages": {
+    "EasyTime": {
+      "version": "0.1.0",
+      "path": "packages/EasyTime",
+      "main": "main.clk",
+      "files": ["package.json", "main.clk"]
+    }
+  }
+}</code></pre>
+</main>
+<aside><b>Clock docs</b><ul>
+<li><a href="#inicio">Início</a></li><li><a href="#bandeiras">Bandeiras</a></li><li><a href="#modulos">Módulos / Fs</a></li><li><a href="#sistema">Sistema</a></li><li><a href="#date">DATE</a></li><li><a href="#history">HISTORY</a></li><li><a href="#easytime">EasyTime</a></li><li><a href="#install">ClockInstall</a></li><li><a href="#package">Banco de pacotes</a></li></ul></aside></div>
+<script>document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{const code=btn.nextElementSibling.innerText;await navigator.clipboard.writeText(code);const old=btn.textContent;btn.textContent='Copiado!';setTimeout(()=>btn.textContent=old,900)}));</script>
+</body></html>
