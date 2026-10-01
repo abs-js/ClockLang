@@ -1,4 +1,5 @@
 # Clock 0.5.0
+that is in portuguese plz traduct /:
 
 Clock é uma linguagem orientada a objetos, executada por `Clock`. Nesta versão, `main.py` é o núcleo único: runtime, módulos, histórico e gerenciamento de pacotes.
 
